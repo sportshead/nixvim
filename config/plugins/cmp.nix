@@ -55,7 +55,7 @@
     };
   };
 
-  plugins.codeium-nvim = {
+  plugins.windsurf-nvim = {
     enable = true;
 
     settings = {
