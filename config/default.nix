@@ -2,6 +2,7 @@
   imports = [
     ./set.nix
     ./remap.nix
+    ./ft.nix
 
     ./plugins/lz-n.nix
     ./plugins/theme.nix
