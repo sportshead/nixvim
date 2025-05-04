@@ -176,7 +176,7 @@
       formatting = {
         alejandra.enable = true;
         biome.enable = true;
-        blackd.enable = true;
+        black.enable = true;
         clang_format.enable = true;
         shfmt.enable = true;
         stylua.enable = true;
