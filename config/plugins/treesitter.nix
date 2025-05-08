@@ -1,24 +1,24 @@
 {
-    plugins.treesitter = {
-        enable = true;
-        nixvimInjections = true;
-        
-        settings = {
-            highlight.enable = true;
+  plugins.treesitter = {
+    enable = true;
+    nixvimInjections = true;
 
-            indent.enable = true;
-        };
+    settings = {
+      highlight.enable = true;
+
+      indent.enable = true;
     };
+  };
 
-    plugins.treesitter-context.enable = true;
+  plugins.treesitter-context.enable = true;
 
-    plugins.hmts = {
-        enable = true;
-        lazyLoad = {
-            enable = true;
-            settings = {
-                ft = "nix";
-            };
-        };
+  plugins.hmts = {
+    enable = true;
+    lazyLoad = {
+      enable = true;
+      settings = {
+        ft = "nix";
+      };
     };
+  };
 }
