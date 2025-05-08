@@ -104,7 +104,7 @@ in {
         };
         eslint = lib.mkIf cfg.eslint {
           enable = true;
-          settings.handlers = {
+          extraOptions.handlers = {
             "eslint/noConfig".__raw =
               # lua
               ''
