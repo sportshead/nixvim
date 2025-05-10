@@ -10,7 +10,12 @@
     };
   };
 
-  plugins.treesitter-context.enable = true;
+  plugins.treesitter-context = {
+    enable = true;
+    settings = {
+      multiline_threshold = 10;
+    };
+  };
 
   plugins.hmts = {
     enable = true;
