@@ -9,7 +9,7 @@
         keys = [
           {
             __unkeyed-1 = "gf";
-            __unkeyed-2.__raw = "function() require('actions-preview.actions').code_actions() end";
+            __unkeyed-2.__raw = "function() require('actions-preview').code_actions() end";
             mode = ["v" "n"];
           }
         ];
