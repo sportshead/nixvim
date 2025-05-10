@@ -1,22 +1,11 @@
 {
-  imports = [
-    ./set.nix
-    ./remap.nix
-    ./ft.nix
-
-    ./plugins/lz-n.nix
-    ./plugins/theme.nix
-    ./plugins/lsp.nix
-    ./plugins/cmp.nix
-    ./plugins/harpoon.nix
-    ./plugins/editing.nix
-    ./plugins/oil.nix
-    ./plugins/telescope.nix
-    ./plugins/treesitter.nix
-    ./plugins/lualine.nix
-    ./plugins/comments.nix
-    ./plugins/git.nix
-  ];
+  imports =
+    [
+      ./set.nix
+      ./remap.nix
+      ./ft.nix
+    ]
+    ++ builtins.map (file: ./plugins/${file}) (builtins.attrNames (builtins.readDir ./plugins));
 
   enableMan = false;
 
