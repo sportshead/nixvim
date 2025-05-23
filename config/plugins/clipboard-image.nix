@@ -5,7 +5,7 @@ in {
     enable = true;
     clipboardPackage = lib.mkIf stdenv.isDarwin pkgs.pngpaste;
 
-    settings.img_name.__raw = "function() return os.date('%Y%m%dT%H%M%S') end";
+    settings.default.img_name.__raw = "function() return os.date('%Y%m%dT%H%M%S') end";
 
     lazyLoad = {
       enable = true;
