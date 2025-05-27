@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.sportshead.lsp;
@@ -65,9 +66,11 @@ in {
           enable = true;
           filetypes = ["vue"];
         };
-        nil_ls = {
+        nixd = {
           enable = true;
           filetypes = ["nix"];
+
+          settings.options.nixvim.expr = ''(builtins.getFlake "github:sportshead/nixvim").packages.${pkgs.system}.default.options'';
         };
         gopls = {
           enable = true;
