@@ -118,6 +118,10 @@ in {
               '';
           };
         };
+        hls = {
+          enable = true;
+          filetypes = ["haskell" "lhaskell" "cabal"];
+        };
       };
 
       keymaps.extra = [
