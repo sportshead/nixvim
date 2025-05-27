@@ -17,7 +17,6 @@
   };
 
   outputs = {
-    nixvim,
     flake-parts,
     nixpkgs,
     ...
@@ -30,9 +29,14 @@
         "aarch64-darwin"
       ];
 
-      perSystem = {system, ...}: let
-        nixvimLib = nixvim.lib.${system};
-        nixvim' = nixvim.legacyPackages.${system};
+      perSystem = {
+        system,
+        inputs',
+        pkgs,
+        ...
+      }: let
+        inherit (inputs') nixvim;
+
         nixvimModule = {
           inherit system;
           module = import ./config;
@@ -46,17 +50,20 @@
             };
           };
         };
-        nvim = nixvim'.makeNixvimWithModule nixvimModule;
+        nvim = nixvim.legacyPackages.makeNixvimWithModule nixvimModule;
       in {
-        checks = {
-          default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-        };
+        checks.default = nixvim.lib.check.mkTestDerivationFromNixvimModule nixvimModule;
 
-        packages = {
-          default = nvim;
-        };
+        packages.default = nvim;
 
-        formatter = nixpkgs.legacyPackages.${system}.alejandra;
+        formatter = pkgs.alejandra;
+
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.bashInteractive
+            nvim
+          ];
+        };
       };
     };
 }
