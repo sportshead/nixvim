@@ -9,6 +9,8 @@ in {
   options = {
     sportshead.lsp = {
       eslint = lib.mkEnableOption "eslint";
+      haskell = lib.mkEnableOption "haskell";
+      clangd = lib.mkEnableOption "clangd";
     };
   };
   config = {
@@ -97,11 +99,6 @@ in {
             "mdx"
           ];
         };
-        clangd = {
-          enable = true;
-          filetypes = ["c" "cpp" "objc" "objcpp" "cuda"];
-          settings.arguments = ["--enable-config"];
-        };
         jedi_language_server = {
           enable = true;
         };
@@ -118,10 +115,15 @@ in {
               '';
           };
         };
-        hls = {
+        hls = lib.mkIf cfg.haskell {
           enable = true;
           filetypes = ["haskell" "lhaskell" "cabal"];
-          installGhc = false;
+          installGhc = true;
+        };
+        clangd = lib.mkIf cfg.clangd {
+          enable = true;
+          filetypes = ["c" "cpp" "objc" "objcpp" "cuda"];
+          settings.arguments = ["--enable-config"];
         };
       };
 
@@ -211,9 +213,10 @@ in {
           alejandra.enable = true;
           biome.enable = true;
           black.enable = true;
-          clang_format.enable = true;
           shfmt.enable = true;
           stylua.enable = true;
+
+          clang_format.enable = cfg.clangd;
         };
       };
     };
