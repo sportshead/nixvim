@@ -119,6 +119,8 @@ in {
           enable = true;
           filetypes = ["haskell" "lhaskell" "cabal"];
           installGhc = true;
+
+          cmd = ["haskell-language-server-wrapper" "--lsp"];
         };
         clangd = lib.mkIf cfg.clangd {
           enable = true;
