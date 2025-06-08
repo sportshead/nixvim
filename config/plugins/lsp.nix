@@ -118,7 +118,9 @@ in {
         hls = lib.mkIf cfg.haskell {
           enable = true;
           filetypes = ["haskell" "lhaskell" "cabal"];
+
           installGhc = true;
+          packageFallback = true;
 
           cmd = ["haskell-language-server-wrapper" "--lsp"];
         };

@@ -12,7 +12,7 @@
 
   inputs = {
     nixpkgs.follows = "nixvim/nixpkgs";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:sportshead/nixvim-src/lsp-fallback";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
