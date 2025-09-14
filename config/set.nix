@@ -30,5 +30,12 @@
     colorcolumn = "80";
   };
 
-  extraConfigLua = "vim.opt.isfname:append('@-@')";
+  extraConfigLua = ''
+    vim.opt.isfname:append('@-@')
+
+    -- endash (default is -N with capital)
+    vim.fn.digraph_set('-n', '–')
+    -- emdash
+    vim.fn.digraph_set('-m', '—')
+  '';
 }
