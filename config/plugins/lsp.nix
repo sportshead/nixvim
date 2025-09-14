@@ -197,11 +197,6 @@ in {
           key = "<F4>";
           action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
         }
-        {
-          mode = "i";
-          key = "<C-h>";
-          action = "<cmd>lua vim.lsp.buf.signature_help()<cr>";
-        }
       ];
     };
 

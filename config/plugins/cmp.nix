@@ -26,6 +26,9 @@
           "snippet_forward"
           "fallback"
         ];
+
+        "<C-h>" = ["show_signature" "hide_signature" "fallback"];
+        "<C-k>" = ["fallback"];
       };
 
       signature.enabled = true;
