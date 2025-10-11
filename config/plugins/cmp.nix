@@ -58,6 +58,15 @@
     };
   };
 
+  extraConfigLua = ''
+    -- https://github.com/LazyVim/LazyVim/commit/15c81fdbb839f0c657fe4c077114475e82f423fe
+    Snacks.util.on_key("<esc>", function()
+      if vim.snippet then
+        vim.snippet.stop()
+      end
+    end)
+  '';
+
   plugins.windsurf-nvim = {
     enable = true;
 
