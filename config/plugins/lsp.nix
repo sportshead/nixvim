@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.sportshead.lsp;
+  cfg = config.sportshead.lang;
 in {
   options = {
-    sportshead.lsp = {
+    sportshead.lang = {
       eslint = lib.mkEnableOption "eslint";
       haskell = lib.mkEnableOption "haskell";
       clangd = lib.mkEnableOption "clangd";
