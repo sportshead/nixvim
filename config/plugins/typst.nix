@@ -29,7 +29,9 @@ in {
           action.__raw = ''
             function()
               local filename = vim.api.nvim_buf_get_name(0)
-              vim.system({"zathura", filename:gsub("%.typ$", ".pdf")})
+              local pdf = filename:gsub("%.typ$", ".pdf")
+
+              vim.system({"zathura", pdf})
             end
           '';
         }
