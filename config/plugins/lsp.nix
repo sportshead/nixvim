@@ -49,22 +49,8 @@ in {
       servers = {
         vtsls = {
           enable = true;
-          filetypes = ["typescript" "javascript" "javascriptreact" "typescriptreact" "vue"];
-          extraOptions.settings.vtsls = {
-            tsserver = {
-              globalPlugins = [
-                {
-                  name = "@vue/typescript-plugin";
-                  location = "${config.plugins.lsp.servers.volar.package}/lib/node_modules/@vue/language-server";
-                  languages = ["vue"];
-                  configNamespace = "typescript";
-                  enableForWorkspaceTypeScriptVersions = true;
-                }
-              ];
-            };
-          };
         };
-        volar = {
+        vue_ls = {
           enable = true;
           filetypes = ["vue"];
         };
@@ -119,7 +105,7 @@ in {
           enable = true;
           filetypes = ["haskell" "lhaskell" "cabal"];
 
-          installGhc = true;
+          installGhc = false;
           packageFallback = true;
 
           cmd = ["haskell-language-server-wrapper" "--lsp"];

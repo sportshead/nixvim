@@ -12,7 +12,8 @@
 
   inputs = {
     nixpkgs.follows = "nixvim/nixpkgs";
-    nixvim.url = "github:nix-community/nixvim";
+    # nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:nix-community/nixvim?ref=pull/3815/head";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -60,7 +61,7 @@
 
         devShells.default = pkgs.mkShell {
           packages = [
-            pkgs.bashInteractive
+            # pkgs.bashInteractive
             nvim
           ];
         };
