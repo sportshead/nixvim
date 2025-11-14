@@ -140,18 +140,23 @@ in {
         }
         {
           mode = "n";
-          key = "gi";
+          key = "gri";
           action = "<cmd>lua vim.lsp.buf.implementation()<cr>";
         }
         {
           mode = "n";
-          key = "go";
+          key = "grt";
           action = "<cmd>lua vim.lsp.buf.type_definition()<cr>";
         }
         {
           mode = "n";
-          key = "gr";
+          key = "grr";
           action = "<cmd>lua vim.lsp.buf.references()<cr>";
+        }
+        {
+          mode = "n";
+          key = "grl";
+          action = "<cmd>lua vim.lsp.codelens.run()<cr>";
         }
         {
           mode = "n";
@@ -167,11 +172,6 @@ in {
           mode = ["n" "x"];
           key = "<F3>";
           action.__raw = "_M.lsp_format_callback";
-        }
-        {
-          mode = "n";
-          key = "<F4>";
-          action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
         }
       ];
     };
