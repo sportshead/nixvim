@@ -9,7 +9,6 @@ in {
   options = {
     sportshead.lang = {
       eslint = lib.mkEnableOption "eslint";
-      haskell = lib.mkEnableOption "haskell";
       clangd = lib.mkEnableOption "clangd";
     };
   };
@@ -100,15 +99,6 @@ in {
                 end
               '';
           };
-        };
-        hls = lib.mkIf cfg.haskell {
-          enable = true;
-          filetypes = ["haskell" "lhaskell" "cabal"];
-
-          installGhc = false;
-          packageFallback = true;
-
-          cmd = ["haskell-language-server-wrapper" "--lsp"];
         };
         clangd = lib.mkIf cfg.clangd {
           enable = true;
