@@ -12,9 +12,9 @@
 
   inputs = {
     nixpkgs.follows = "nixvim/nixpkgs";
+    flake-parts.follows = "nixvim/flake-parts";
     # nixvim.url = "github:nix-community/nixvim";
     nixvim.url = "github:nix-community/nixvim?ref=pull/3815/head";
-    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs = {
