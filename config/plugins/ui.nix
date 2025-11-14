@@ -1,6 +1,4 @@
 {
-  plugins.notify.enable = true;
-
   plugins.actions-preview = {
     enable = true;
     lazyLoad = {
@@ -23,6 +21,7 @@
       input.enabled = true;
       picker.enabled = true;
       rename.enabled = true;
+      notifier.enabled = true;
     };
   };
 
