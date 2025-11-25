@@ -20,7 +20,7 @@ in {
         then
           # lua
           ''
-            vim.cmd("silent! EslintFixAll")
+            vim.cmd("silent! LspEslintFixAll")
           ''
         else
           # lua
