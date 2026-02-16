@@ -15,24 +15,17 @@ in {
   config = {
     extraConfigLua = ''
       _M.lsp_format_callback = function ()
-        ${
-        if cfg.eslint
-        then
-          # lua
-          ''
-            vim.cmd("silent! LspEslintFixAll")
-          ''
-        else
-          # lua
-          ''
-            vim.lsp.buf.format({
-                filter = function(client)
-                    local lsp_blacklist = { "lua_ls", "vtsls", "eslint" }
-                    return not vim.tbl_contains(lsp_blacklist, client.name)
-                end,
-            })
-          ''
-      }
+        ${lib.optionalString cfg.eslint
+        # lua
+        ''
+          vim.cmd("silent! LspEslintFixAll")
+        ''}
+          vim.lsp.buf.format({
+              filter = function(client)
+                  local lsp_blacklist = { "lua_ls", "vtsls", "eslint" }
+                  return not vim.tbl_contains(lsp_blacklist, client.name)
+              end,
+          })
       end
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       vim.api.nvim_clear_autocmds({ group = augroup })
