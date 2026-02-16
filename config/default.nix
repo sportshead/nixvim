@@ -18,6 +18,7 @@
       enable = true;
       standalonePlugins = [
         "nvim-treesitter"
+        "snacks.nvim"
       ];
       pathsToLink = [
         # blink.cmp native fuzzy funder
