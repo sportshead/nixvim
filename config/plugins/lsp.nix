@@ -22,7 +22,7 @@ in {
         ''}
           vim.lsp.buf.format({
               filter = function(client)
-                  local lsp_blacklist = { "lua_ls", "vtsls", "eslint" }
+                  local lsp_blacklist = { "lua_ls", "vtsls", "eslint", "vue_ls" }
                   return not vim.tbl_contains(lsp_blacklist, client.name)
               end,
           })
