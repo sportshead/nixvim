@@ -1,11 +1,10 @@
 {
-  imports =
-    [
-      ./set.nix
-      ./remap.nix
-      ./ft.nix
-    ]
-    ++ builtins.map (file: ./plugins/${file}) (builtins.attrNames (builtins.readDir ./plugins));
+  imports = [
+    ./set.nix
+    ./remap.nix
+    ./ft.nix
+  ]
+  ++ builtins.map (file: ./plugins/${file}) (builtins.attrNames (builtins.readDir ./plugins));
 
   enableMan = false;
 

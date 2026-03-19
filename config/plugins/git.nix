@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  extraPackages = [pkgs.git];
+{ pkgs, ... }:
+{
+  extraPackages = [ pkgs.git ];
   extraPlugins = [
     {
       plugin = pkgs.vimPlugins.vim-fugitive;
@@ -9,7 +10,10 @@
   plugins.lz-n.plugins = [
     {
       __unkeyed-1 = "vim-fugitive";
-      cmd = ["G" "Git"];
+      cmd = [
+        "G"
+        "Git"
+      ];
     }
   ];
 

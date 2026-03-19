@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   extraPlugins = [
     {
       plugin = pkgs.vimPlugins.harpoon2;

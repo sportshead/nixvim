@@ -8,7 +8,10 @@
           {
             __unkeyed-1 = "gra";
             __unkeyed-2.__raw = "function() require('actions-preview').code_actions() end";
-            mode = ["v" "n"];
+            mode = [
+              "v"
+              "n"
+            ];
           }
         ];
       };

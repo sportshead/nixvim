@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.sportshead.lang;
-in {
+in
+{
   options = {
     sportshead.lang = {
       eslint = lib.mkEnableOption "eslint";
@@ -16,10 +18,11 @@ in {
     extraConfigLua = ''
       _M.lsp_format_callback = function ()
         ${lib.optionalString cfg.eslint
-        # lua
-        ''
-          vim.cmd("silent! LspEslintFixAll")
-        ''}
+          # lua
+          ''
+            vim.cmd("silent! LspEslintFixAll")
+          ''
+        }
           vim.lsp.buf.format({
               filter = function(client)
                   local lsp_blacklist = { "lua_ls", "vtsls", "eslint", "vue_ls" }
@@ -44,11 +47,11 @@ in {
         };
         vue_ls = {
           enable = true;
-          filetypes = ["vue"];
+          filetypes = [ "vue" ];
         };
         nixd = {
           enable = true;
-          filetypes = ["nix"];
+          filetypes = [ "nix" ];
 
           settings.options.nixvim.expr = ''(builtins.getFlake "github:sportshead/nixvim").packages.${pkgs.system}.default.options'';
         };
@@ -95,8 +98,14 @@ in {
         };
         clangd = lib.mkIf cfg.clangd {
           enable = true;
-          filetypes = ["c" "cpp" "objc" "objcpp" "cuda"];
-          settings.arguments = ["--enable-config"];
+          filetypes = [
+            "c"
+            "cpp"
+            "objc"
+            "objcpp"
+            "cuda"
+          ];
+          settings.arguments = [ "--enable-config" ];
         };
       };
 
@@ -162,7 +171,10 @@ in {
           action = "<cmd>lua vim.lsp.buf.rename()<cr>";
         }
         {
-          mode = ["n" "x"];
+          mode = [
+            "n"
+            "x"
+          ];
           key = "<F3>";
           action.__raw = "_M.lsp_format_callback";
         }
@@ -173,12 +185,15 @@ in {
       enable = true;
       lazyLoad = {
         enable = true;
-        settings.event = ["BufReadPost" "BufNewFile"];
+        settings.event = [
+          "BufReadPost"
+          "BufNewFile"
+        ];
       };
 
       sources = {
         formatting = {
-          alejandra.enable = true;
+          nixfmt.enable = true;
           biome.enable = true;
           black.enable = true;
           shfmt.enable = true;

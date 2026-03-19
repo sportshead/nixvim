@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   extraPlugins = [
     pkgs.vimPlugins.lsp-progress-nvim
   ];
@@ -12,8 +13,12 @@
 
     settings = {
       sections = {
-        lualine_a = ["mode"];
-        lualine_b = ["branch" "diff" "diagnostics"];
+        lualine_a = [ "mode" ];
+        lualine_b = [
+          "branch"
+          "diff"
+          "diagnostics"
+        ];
         lualine_c = [
           {
             __unkeyed-1 = "filename";
@@ -30,7 +35,11 @@
           '')
         ];
 
-        lualine_x = ["encoding" "fileformat" "filetype"];
+        lualine_x = [
+          "encoding"
+          "fileformat"
+          "filetype"
+        ];
         lualine_y = [
           {
             __unkeyed-1.__raw = ''
@@ -66,7 +75,10 @@
             end
           '')
         ];
-        lualine_z = ["progress" "location"];
+        lualine_z = [
+          "progress"
+          "location"
+        ];
       };
     };
   };

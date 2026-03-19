@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   plugins.blink-cmp = {
     enable = true;
     settings = {
@@ -27,8 +28,12 @@
           "fallback"
         ];
 
-        "<C-h>" = ["show_signature" "hide_signature" "fallback"];
-        "<C-k>" = ["fallback"];
+        "<C-h>" = [
+          "show_signature"
+          "hide_signature"
+          "fallback"
+        ];
+        "<C-k>" = [ "fallback" ];
       };
 
       signature.enabled = true;
@@ -39,7 +44,12 @@
       };
 
       sources = {
-        default = ["lsp" "buffer" "snippets" "path"];
+        default = [
+          "lsp"
+          "buffer"
+          "snippets"
+          "path"
+        ];
       };
 
       fuzzy.sorts = [

@@ -9,7 +9,14 @@
     lazyLoad = {
       enable = true;
       settings = {
-        keys = ["<leader>pf" "<leader>pg" "<leader>." "<leader>pb" "<leader>pp" "<leader>pr"];
+        keys = [
+          "<leader>pf"
+          "<leader>pg"
+          "<leader>."
+          "<leader>pb"
+          "<leader>pp"
+          "<leader>pr"
+        ];
         after =
           # lua
           ''

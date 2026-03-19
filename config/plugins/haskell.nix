@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.sportshead.lang;
   vim-syntax-shakespeare = pkgs.vimUtils.buildVimPlugin {
     name = "vim-syntax-shakespeare";
@@ -14,7 +15,8 @@
       sha256 = "sha256-sdCXJOvB+vJE0ir+qsT/u1cHNxrksMnqeQi4D/Vg6UA=";
     };
   };
-in {
+in
+{
   options = {
     sportshead.lang = {
       haskell = lib.mkEnableOption "haskell";

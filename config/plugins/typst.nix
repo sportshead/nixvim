@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.sportshead.lang;
-in {
+in
+{
   options = {
     sportshead.lang = {
       typst = lib.mkEnableOption "typst";

@@ -1,12 +1,13 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) mapAttrs' nameValuePair removeSuffix;
   inherit (builtins) readDir;
-in {
+in
+{
   files = mapAttrs' (
     name: _:
-      nameValuePair "ftplugin/${removeSuffix ".nix" name}.lua"
-      {
-        imports = [./ft/${name}];
-      }
+    nameValuePair "ftplugin/${removeSuffix ".nix" name}.lua" {
+      imports = [ ./ft/${name} ];
+    }
   ) (readDir ./ft);
 }

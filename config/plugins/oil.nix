@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   plugins.oil = {
     enable = true;
     settings.view_options.is_hidden_file =

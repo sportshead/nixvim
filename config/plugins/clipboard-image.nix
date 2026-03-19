@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   inherit (pkgs) lib stdenv;
-in {
+in
+{
   plugins.clipboard-image = {
     enable = true;
     clipboardPackage = lib.mkIf stdenv.isDarwin pkgs.pngpaste;

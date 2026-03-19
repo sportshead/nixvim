@@ -17,12 +17,13 @@
     nixvim.url = "github:nix-community/nixvim?ref=pull/3815/head";
   };
 
-  outputs = {
-    flake-parts,
-    nixpkgs,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    {
+      flake-parts,
+      nixpkgs,
+      ...
+    }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -30,41 +31,46 @@
         "aarch64-darwin"
       ];
 
-      perSystem = {
-        system,
-        inputs',
-        pkgs,
-        ...
-      }: let
-        inherit (inputs') nixvim;
+      perSystem =
+        {
+          system,
+          inputs',
+          pkgs,
+          ...
+        }:
+        let
+          inherit (inputs') nixvim;
 
-        nixvimModule = {
-          inherit system;
-          module = import ./config;
-          extraSpecialArgs = {
-            pkgs = import nixpkgs {
-              inherit system;
-              config.allowUnfreePredicate = pkg:
-                builtins.elem (nixpkgs.lib.getName pkg) [
-                  "codeium"
-                ];
+          nixvimModule = {
+            inherit system;
+            module = import ./config;
+            extraSpecialArgs = {
+              pkgs = import nixpkgs {
+                inherit system;
+                config.allowUnfreePredicate =
+                  pkg:
+                  builtins.elem (nixpkgs.lib.getName pkg) [
+                    "codeium"
+                  ];
+              };
             };
           };
+          nvim = nixvim.legacyPackages.makeNixvimWithModule nixvimModule;
+        in
+        {
+          checks.default = nixvim.lib.check.mkTestDerivationFromNixvimModule nixvimModule;
+
+          packages.default = nvim;
+
+          formatter = pkgs.nixfmt-tree;
+
+          devShells.default = pkgs.mkShell {
+            packages = [
+              # pkgs.bashInteractive
+              pkgs.nixfmt-tree
+              nvim
+            ];
+          };
         };
-        nvim = nixvim.legacyPackages.makeNixvimWithModule nixvimModule;
-      in {
-        checks.default = nixvim.lib.check.mkTestDerivationFromNixvimModule nixvimModule;
-
-        packages.default = nvim;
-
-        formatter = pkgs.alejandra;
-
-        devShells.default = pkgs.mkShell {
-          packages = [
-            # pkgs.bashInteractive
-            nvim
-          ];
-        };
-      };
     };
 }
