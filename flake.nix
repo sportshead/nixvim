@@ -13,8 +13,7 @@
   inputs = {
     nixpkgs.follows = "nixvim/nixpkgs";
     flake-parts.follows = "nixvim/flake-parts";
-    # nixvim.url = "github:nix-community/nixvim";
-    nixvim.url = "github:nix-community/nixvim?ref=pull/3815/head";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
@@ -50,6 +49,7 @@
                 config.allowUnfreePredicate =
                   pkg:
                   builtins.elem (nixpkgs.lib.getName pkg) [
+                    "whitespace.nvim"
                     "codeium"
                   ];
               };
