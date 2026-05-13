@@ -107,6 +107,11 @@ in
           ];
           settings.arguments = [ "--enable-config" ];
         };
+        rust_analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+        };
       };
 
       keymaps.extra = [
