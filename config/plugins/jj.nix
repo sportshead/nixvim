@@ -1,5 +1,5 @@
 {
-  plugins.jj-nvim = {
+  plugins.jj = {
     enable = true;
 
     settings = {
